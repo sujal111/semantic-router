@@ -81,6 +81,17 @@ recipes:
 
 该卡片使用已公布的 1,000,000 token 上下文窗口。思考模式接受 983,616 个输入 token 和 262,144 个输出 token，后者即卡片上的输出上限。五条导入的 [Artificial Analysis](https://artificialanalysis.ai/models/qwen4-max) 记录都是 `xhigh`：GDP.pdf All-pass、Terminal-Bench 4.0 pass@1、带 95% 区间的 AA-Briefcase v1.1 Elo、AA-Omniscience v1.1 的 Accuracy、Net Score 与 Hallucination Rate，以及覆盖全部 1,000 题的 HLE-Diamond pass@1。`low` 和 `high` 仍无测量。这些带版本的基准不替代 Intelligence 1.0，分数也不是 Router 本地复现的结果。
 
+## Muse Wonder 和 Muse Ember
+
+将 `meta/muse-wonder-1.0` 或 `meta/muse-ember-1.0` 绑定到 `meta` Provider。
+Wonder 处于预览阶段。两个 API 模型 ID 都使用 Meta 的 Standard 服务模式。
+目录为每个模型收录了五项独立评测，Wonder 的实测推理级别为 `max`，Ember 为 `xhigh`。[Meta 模型文档](https://dev.meta.ai/docs/models)
+
+两个模型的推理均始终启用，默认级别为 `max`。在决策的模型引用中设置 `use_reasoning: true`，再将 `reasoning_effort`
+设为 `minimal`、`low`、`medium`、`high`、`xhigh` 或 `max` 即可调整。
+Router 在 Chat Completions 请求中发送顶层字段 `reasoning_effort`，在 Responses 请求中发送嵌套字段
+`reasoning.effort`。[Meta 推理文档](https://dev.meta.ai/docs/reasoning)
+
 ## MiniMax M3.1 Flash
 
 `minimax/minimax-m3.1-flash` 对应采用 MiniMax Community License 的[官方公开权重](https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/tree/262ae6830934f3512211081b8a3f16425b93a239)。MiniMax API 与实验性的 vLLM 映射共用该模型卡，两条映射目前均声明支持 Chat Completions。

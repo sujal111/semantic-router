@@ -159,6 +159,19 @@ Hallucination Rate, and HLE-Diamond pass@1 over all 1,000 questions. `low` and
 `high` stay unmeasured. These versioned benchmarks do not replace Intelligence
 1.0, and the scores are not local Router reproductions.
 
+## Muse Wonder and Muse Ember
+
+Bind `meta/muse-wonder-1.0` or `meta/muse-ember-1.0` to the `meta` Provider.
+Wonder is in preview. Both API model IDs use Meta's Standard service mode.
+The catalog includes five independent evaluations for each model, measured
+at `max` for Wonder and `xhigh` for Ember. [Meta models](https://dev.meta.ai/docs/models)
+
+Both models use reasoning on every request and default to `max`. Set
+`use_reasoning: true` on the decision's model reference. Use `reasoning_effort` to choose `minimal`, `low`,
+`medium`, `high`, `xhigh`, or `max`. The Router sends it as `reasoning_effort`
+on Chat Completions and as `reasoning.effort` on Responses.
+[Meta reasoning controls](https://dev.meta.ai/docs/reasoning)
+
 ## MiniMax M3.1 Flash
 
 `minimax/minimax-m3.1-flash` identifies the
